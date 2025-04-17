@@ -24,11 +24,26 @@
           class="shelf-board"
         >
           <div v-for="game in shelf" :key="game.id" class="game-slot">
-            <img :src="game.image" :alt="game.name" />
+            <img 
+              :src="game.image" 
+              :alt="game.name"
+              @click="selectGame(game)" 
+            />
           </div>
         </div>
       </div>
     </div>
+
+    <div v-if="selectedGame" class="zoom-overlay" @click.self="clearSelection">
+      <div class="zoom-content">
+        <img :src="selectedGame.image" :alt="selectedGame.name" class="zoom-image" />
+        <div class="zoom-text">
+          <h2>{{ selectedGame.name }}</h2>
+          <p>This is a description of the game</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -58,9 +73,21 @@ export default {
 
     return {
       shelfGrid,
+      selectedGame: null,
     };
   },
-};
+
+  methods: {
+    selectGame(game) {
+      this.selectedGame = game;
+    },
+    clearSelection() {
+      this.selectedGame = null;
+    }
+  }
+
+}
+
 </script>
 
 <style scoped>
@@ -149,4 +176,58 @@ export default {
 .game-slot:hover {
   transform: scale(1.1) rotate(-2deg);
 }
+
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.zoom-content {
+  display: flex;
+  width: 80%;
+  max-width: 1000px;
+  height: 70%;
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  animation: zoomIn 0.5s ease forwards;
+}
+
+.zoom-image {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.zoom-text {
+  width: 50%;
+  padding: 2rem;
+  overflow-y: auto;
+  background: #fdf8f3;
+  color: #333;
+  font-family: 'Cinzel', serif;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
 </style>
