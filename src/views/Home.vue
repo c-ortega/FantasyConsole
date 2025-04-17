@@ -103,6 +103,9 @@ export default {
   cursor: url("@/assets/blueWand.png"), auto;
   overflow: hidden;
   position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .corner-icon {
