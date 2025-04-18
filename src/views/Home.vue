@@ -1,16 +1,35 @@
 <template>
   <div class="magic-ui">
-    <router-link to="/about" class="corner-icon top-left">
-      <img src="@/assets/crystalBall.png" alt="About Us" />
-    </router-link>
+    <!-- Top Left: About Us -->
+    <div class="corner-button top-left">
+      <router-link to="/about">
+        <img src="@/assets/crystalBall.png" alt="About Us" />
+      </router-link>
+      <span class="button-label">About Us</span>
+    </div>
 
-    <router-link to="/contact" class="corner-icon top-right">
-      <img src="@/assets/crystalBall.png" alt="Contact Us" />
-    </router-link>
+    <!-- Top Right: Contact Us -->
+    <div class="corner-button top-right">
+      <router-link to="/contact">
+        <img src="@/assets/crystalBall.png" alt="Contact Us" />
+      </router-link>
+      <span class="button-label">Contact Us</span>
+    </div>
 
-    <router-link to="/search" class="corner-icon bottom-right">
-      <img src="@/assets/locator.png" alt="Search" />
-    </router-link>
+    <!-- Bottom Right: Locator Spell -->
+    <div class="corner-button bottom-right">
+      <span class="button-label above">Locator Spell</span>
+      <router-link to="/search">
+        <img src="@/assets/locator.png" alt="Search" />
+      </router-link>
+    </div>
+
+
+    <h1 class="ui-title">Fantasy UI Console</h1>
+
+    <div class="ui-intro">
+      <p>Welcome to the Fantasy UI Console. Select a game from the shelf to reveal its secrets!</p>
+    </div>
 
     <div class="magic-shelf-grid">
       <div
@@ -108,17 +127,46 @@ export default {
   background-position: center;
 }
 
-.corner-icon {
+.ui-title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 3rem;
+  color: #f9e8c9;
+  text-shadow: 0 0 10px #7a5c28, 0 0 20px #b08d57;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+.ui-intro {
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: #3d2f1b;
+  animation: fadeInIntro 1.5s ease-out;
+}
+
+.corner-button {
   position: absolute;
   width: 64px;
-  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 10;
 }
-.corner-icon img {
-  width: 100%;
-  height: 100%;
+
+.corner-button img {
+  width: 64px;
+  height: 64px;
   object-fit: contain;
 }
+
 .top-left {
   top: 20px;
   left: 20px;
@@ -130,6 +178,21 @@ export default {
 .bottom-right {
   bottom: 20px;
   right: 20px;
+}
+
+.button-label {
+  margin-top: 6px;
+  color: #f9e8c9;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.9rem;
+  text-shadow: 0 0 6px #7a5c28;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.button-label.above {
+  margin-top: 0;
+  margin-bottom: 6px;
 }
 
 .magic-shelf {
@@ -232,5 +295,24 @@ export default {
   }
 }
 
+@keyframes fadeInIntro {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titlePulse {
+  0%, 100% {
+    text-shadow: 0 0 10px #7a5c28, 0 0 20px #b08d57;
+  }
+  50% {
+    text-shadow: 0 0 20px #d1aa66, 0 0 40px #ffe2a0;
+  }
+}
 
 </style>
