@@ -69,6 +69,7 @@
 
 <script>
 import moonLock from "@/assets/moonLock.webp";
+import { useRouter } from 'vue-router';
 
 function chunk(arr, size) {
   return arr.reduce((acc, _, i) => {
@@ -98,14 +99,17 @@ export default {
   },
 
   methods: {
-    selectGame(game) {
-      this.selectedGame = game;
-    },
-    clearSelection() {
-      this.selectedGame = null;
-    },
+  selectGame(game) {
+    this.$router.push({
+      path: '/cauldron',
+      query: { game: game.name }
+    });
   },
-};
+  clearSelection() {
+    this.selectedGame = null;
+  },
+},
+}
 </script>
 
 <style scoped>
