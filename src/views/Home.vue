@@ -3,7 +3,7 @@
     <!-- Top Left: About Us -->
     <div class="corner-button top-left">
       <router-link to="/about">
-        <img src="@/assets/crystalBall.png" alt="About Us" />
+        <img src="@/assets/aboutUs.png" alt="About Us" />
       </router-link>
       <span class="button-label">About Us</span>
     </div>
@@ -24,11 +24,13 @@
       </router-link>
     </div>
 
-
     <h1 class="ui-title">Fantasy UI Console</h1>
 
     <div class="ui-intro">
-      <p>Welcome to the Fantasy UI Console. Select a game from the shelf to reveal its secrets!</p>
+      <p>
+        Welcome to the Fantasy UI Console. Select a game from the shelf to
+        reveal its secrets!
+      </p>
     </div>
 
     <div class="magic-shelf-grid">
@@ -43,11 +45,7 @@
           class="shelf-board"
         >
           <div v-for="game in shelf" :key="game.id" class="game-slot">
-            <img 
-              :src="game.image" 
-              :alt="game.name"
-              @click="selectGame(game)" 
-            />
+            <img :src="game.image" :alt="game.name" @click="selectGame(game)" />
           </div>
         </div>
       </div>
@@ -55,14 +53,17 @@
 
     <div v-if="selectedGame" class="zoom-overlay" @click.self="clearSelection">
       <div class="zoom-content">
-        <img :src="selectedGame.image" :alt="selectedGame.name" class="zoom-image" />
+        <img
+          :src="selectedGame.image"
+          :alt="selectedGame.name"
+          class="zoom-image"
+        />
         <div class="zoom-text">
           <h2>{{ selectedGame.name }}</h2>
           <p>This is a description of the game</p>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -102,11 +103,9 @@ export default {
     },
     clearSelection() {
       this.selectedGame = null;
-    }
-  }
-
-}
-
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -128,7 +127,7 @@ export default {
 }
 
 .ui-title {
-  font-family: 'Cinzel Decorative', cursive;
+  font-family: "Cinzel Decorative", cursive;
   font-size: 3rem;
   color: #f9e8c9;
   text-shadow: 0 0 10px #7a5c28, 0 0 20px #b08d57;
@@ -146,7 +145,7 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   max-width: 600px;
   text-align: center;
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
   font-size: 1.5rem;
   color: #3d2f1b;
   animation: fadeInIntro 1.5s ease-out;
@@ -183,7 +182,7 @@ export default {
 .button-label {
   margin-top: 6px;
   color: #f9e8c9;
-  font-family: 'Cinzel Decorative', cursive;
+  font-family: "Cinzel Decorative", cursive;
   font-size: 0.9rem;
   text-shadow: 0 0 6px #7a5c28;
   text-align: center;
@@ -281,7 +280,7 @@ export default {
   overflow-y: auto;
   background: #fdf8f3;
   color: #333;
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
 }
 
 @keyframes zoomIn {
@@ -307,12 +306,12 @@ export default {
 }
 
 @keyframes titlePulse {
-  0%, 100% {
+  0%,
+  100% {
     text-shadow: 0 0 10px #7a5c28, 0 0 20px #b08d57;
   }
   50% {
     text-shadow: 0 0 20px #d1aa66, 0 0 40px #ffe2a0;
   }
 }
-
 </style>

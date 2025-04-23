@@ -1,12 +1,14 @@
 <template>
   <div class="about-page">
-    <router-link to="/" class="home-button">🏠</router-link>
+    <router-link to="/" class="home-button">
+      <img src="@/assets/home.png" alt="Home" class="home-icon" />
+    </router-link>
 
     <div class="about-wrapper">
       <h1 class="title">About Us</h1>
 
       <div class="about-content">
-        <img src="@/assets/crystalBall.png" class="about-logo" alt="FS Logo" />
+        <img src="@/assets/logo.png" class="about-logo" alt="FS Logo" />
 
         <div class="profile-area">
           <div class="profile-icon"></div>
@@ -95,22 +97,28 @@ export default {};
 }
 
 .home-button {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
-  width: 40px;
-  height: 40px;
-  background: black;
-  color: white;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 40px;
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: transform 0.2s ease;
+  width: auto;
+  height: auto;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
   z-index: 10;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
+
 .home-button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+.home-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
 }
 </style>
