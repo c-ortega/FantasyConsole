@@ -1,6 +1,8 @@
 <template>
   <div class="search-page">
-    <router-link to="/" class="home-button">🏠</router-link>
+    <router-link to="/" class="home-button">
+      <img src="@/assets/home.png" alt="Home" class="home-icon" />
+    </router-link>
 
     <div class="search-box">
       <h2 class="spell-title">Locator Spell Ingredients</h2>
@@ -10,7 +12,7 @@
           <li><strong>Genre:</strong> <input type="text" v-model="genre" /></li>
           <li><strong>Title:</strong> <input type="text" v-model="title" /></li>
           <li>
-            <strong>Author:</strong> <input type="text" v-model="author" />
+            <strong>Publisher:</strong> <input type="text" v-model="author" />
           </li>
         </ul>
         <button type="submit" class="submit-btn">Cast</button>
@@ -35,6 +37,7 @@ export default {
         title: this.title,
         author: this.author,
       });
+      this.$router.push("/");
     },
   },
 };
@@ -120,23 +123,28 @@ export default {
 }
 
 .home-button {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 20px;
-  width: 40px;
-  height: 40px;
-  background: black;
-  color: white;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 40px;
-  font-size: 1.2rem;
-  box-shadow: 0 0 8px gold;
-  text-decoration: none;
-  transition: transform 0.2s ease;
+  width: auto;
+  height: auto;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
   z-index: 10;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
+
 .home-button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+}
+
+.home-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
 }
 </style>
