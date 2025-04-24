@@ -127,7 +127,7 @@ export default {
 .cauldron-page {
   width: 100%;
   min-height: 100vh;
-  background: #0a0a20 url("@/assets/dungeon-bg.jpg") no-repeat center center;
+  background: #0a0a20 url("@/assets/background.png") no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
